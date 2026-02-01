@@ -6,11 +6,13 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/saykim/skills-warehouse?style=for-the-badge&logo=github&color=yellow)](https://github.com/saykim/skills-warehouse/stargazers)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue?style=for-the-badge)](LICENSE.txt)
-[![Skills](https://img.shields.io/badge/Skills-645+-purple?style=for-the-badge&logo=rocket)](.)
+[![Skills](https://img.shields.io/badge/Skills-645+-purple?style=for-the-badge&logo=rocket)](./skills)
 
 ---
 
 **Claude, Gemini 등 AI 에이전트의 능력을 확장하는 600개 이상의 스킬 모음**
+
+[📂 스킬 둘러보기](./skills)
 
 </div>
 
@@ -34,16 +36,18 @@
 | 📝 **문서화** | 문서 및 콘텐츠 작성 | `api-documenter`, `writing-skills`, `copywriting` |
 | 🎮 **게임** | 게임 개발 | `game-development`, `unity-developer`, `godot-gdscript-patterns` |
 
+> 📂 모든 스킬은 [`./skills`](./skills) 폴더에서 확인할 수 있습니다.
+
 ## 🚀 시작하기
 
 ### Claude에서 사용하기
 
 ```bash
 # 원하는 스킬 폴더를 .claude/skills 디렉토리에 복사
-cp -r skills-warehouse/python-pro ~/.claude/skills/
+cp -r skills-warehouse/skills/python-pro ~/.claude/skills/
 
 # 또는 심볼릭 링크 생성
-ln -s $(pwd)/skills-warehouse/python-pro ~/.claude/skills/python-pro
+ln -s $(pwd)/skills-warehouse/skills/python-pro ~/.claude/skills/python-pro
 ```
 
 ### 스킬 구조
@@ -96,7 +100,7 @@ PostgreSQL 최적화 및 운영 가이드
 새로운 스킬을 추가하거나 기존 스킬을 개선하고 싶다면:
 
 1. 이 저장소를 Fork 하세요
-2. 새로운 스킬 폴더를 생성하세요
+2. `skills/` 폴더에 새로운 스킬 폴더를 생성하세요
 3. `SKILL.md` 파일을 작성하세요
 4. Pull Request를 제출하세요
 
