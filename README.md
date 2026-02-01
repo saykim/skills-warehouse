@@ -6,11 +6,11 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/saykim/skills-warehouse?style=for-the-badge&logo=github&color=yellow)](https://github.com/saykim/skills-warehouse/stargazers)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue?style=for-the-badge)](LICENSE.txt)
-[![Skills](https://img.shields.io/badge/Skills-645+-purple?style=for-the-badge&logo=rocket)](./skills)
+[![Skills](https://img.shields.io/badge/Skills-650+-purple?style=for-the-badge&logo=rocket)](./skills)
 
 ---
 
-**AI 에이전트의 능력을 확장하는 600개 이상의 스킬 모음**
+**Claude, Gemini 등 AI 에이전트의 능력을 확장하는 650개 이상의 스킬 모음**
 
 [📂 스킬 둘러보기](./skills)
 
@@ -18,7 +18,7 @@
 
 ## ✨ 특징
 
-- 🚀 **600개 이상의 스킬** - 개발, 보안, 디자인, 마케팅 등 다양한 분야
+- 🚀 **650개 이상의 스킬** - 개발, 보안, 디자인, 마케팅 등 다양한 분야
 - 📦 **즉시 사용 가능** - 각 스킬은 독립적으로 동작
 - 🔧 **쉬운 커스터마이징** - 필요에 맞게 수정 가능
 - 📚 **풍부한 문서화** - 각 스킬에 상세한 SKILL.md 포함
