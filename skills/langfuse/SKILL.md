@@ -66,18 +66,21 @@ generation = trace.generation(
 )
 
 # Make actual LLM call
-response = openai.chat.completions.create(
+# Prefer the Responses API (current OpenAI API reference)
+response = openai.responses.create(
     model="gpt-4o",
-    messages=[{"role": "user", "content": "Hello"}]
+    input=[{"role": "user", "content": "Hello"}],
 )
 
 # Complete the generation with output
+# Responses API: response.output_text is a convenience accessor
+# Usage fields are typically: input_tokens / output_tokens
 generation.end(
-    output=response.choices[0].message.content,
+    output=getattr(response, "output_text", None),
     usage={
-        "input": response.usage.prompt_tokens,
-        "output": response.usage.completion_tokens
-    }
+        "input": getattr(getattr(response, "usage", None), "input_tokens", None),
+        "output": getattr(getattr(response, "usage", None), "output_tokens", None),
+    },
 )
 
 # Score the trace
@@ -103,27 +106,31 @@ from langfuse.openai import openai
 # Drop-in replacement for OpenAI client
 # All calls automatically traced
 
-response = openai.chat.completions.create(
+response = openai.responses.create(
     model="gpt-4o",
-    messages=[{"role": "user", "content": "Hello"}],
+    input=[{"role": "user", "content": "Hello"}],
     # Langfuse-specific parameters
     name="greeting",  # Trace name
     session_id="session-123",
     user_id="user-456",
     tags=["test"],
-    metadata={"feature": "chat"}
+    metadata={"feature": "chat"},
 )
 
-# Works with streaming
-stream = openai.chat.completions.create(
+# Works with streaming (Responses API)
+stream = openai.responses.create(
     model="gpt-4o",
-    messages=[{"role": "user", "content": "Tell me a story"}],
+    input=[{"role": "user", "content": "Tell me a story"}],
     stream=True,
-    name="story-generation"
+    name="story-generation",
 )
 
-for chunk in stream:
-    print(chunk.choices[0].delta.content, end="")
+for event in stream:
+    # Exact event shapes vary by SDK version; handle text deltas defensively.
+    delta = getattr(event, "delta", None)
+    text = getattr(delta, "text", None)
+    if text:
+        print(text, end="")
 
 # Works with async
 import asyncio
@@ -132,10 +139,10 @@ from langfuse.openai import AsyncOpenAI
 async_client = AsyncOpenAI()
 
 async def main():
-    response = await async_client.chat.completions.create(
+    response = await async_client.responses.create(
         model="gpt-4o",
-        messages=[{"role": "user", "content": "Hello"}],
-        name="async-greeting"
+        input=[{"role": "user", "content": "Hello"}],
+        name="async-greeting",
     )
 ```
 
