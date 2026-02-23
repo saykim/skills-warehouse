@@ -44,10 +44,10 @@
 
 ```bash
 # 원하는 스킬 폴더를 .claude/skills 디렉토리에 복사
-cp -r skills-warehouse/skills/python-pro ~/.claude/skills/
+cp -r skills/skills/python-pro ~/.claude/skills/
 
 # 또는 심볼릭 링크 생성
-ln -s $(pwd)/skills-warehouse/skills/python-pro ~/.claude/skills/python-pro
+ln -s $(pwd)/skills/skills/python-pro ~/.claude/skills/python-pro
 ```
 
 ### 스킬 구조
